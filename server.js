@@ -36,7 +36,7 @@ app.post('/api/send-request', async (req, res) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: 'info@russtecs.ru',    // <--- сюда нужно будет заменить на ваш email
+    to: 'info@russtecs.ru',    //
     subject: `Новая заявка от ${name}`,
     text: `
       Имя: ${name}
@@ -49,7 +49,6 @@ app.post('/api/send-request', async (req, res) => {
       <p><strong>Имя:</strong> ${name}</p>
       <p><strong>Телефон:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email || 'не указан'}</p>
-      <p><strong>Сообщение:</strong> ${message || '—'}</p>
     `
   };
 
