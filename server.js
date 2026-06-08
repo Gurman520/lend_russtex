@@ -45,7 +45,7 @@ app.post('/api/send-request', async (req, res) => {
       Сообщение: ${message || '—'}
     `,
     html: `
-      <h3>Новая заявка с лендинга РусТекс</h3>
+      <h3>Новая заявка с лендинга РусСтекс</h3>
       <p><strong>Имя:</strong> ${name}</p>
       <p><strong>Телефон:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email || 'не указан'}</p>
