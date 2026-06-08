@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>РусТекс — поставки микроэлектроники</title>
+    <meta name="description" content="РусТекс — дистрибьютор микроэлектроники и компонентов. Микроконтроллеры, датчики, силовые модули.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">Рус<span>Стекс</span> ⚡</div>
+      <div class="nav-links">
+        <a href="#about">О компании</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#contact">Контакты</a>
+        <button class="btn-glow" id="openModalBtn">Оставить заявку</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero секция -->
+  <div class="container">
+    <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">Официальный дистрибьютор электронных компонентов</div>
+          <h1>Электронная компонентная база</h1>
+          <p>Специализируемся на поставке различных электронных компонентов, включая полупроводники, интегральные схемы, резисторы, конденсаторы, транзисторы, разъемы и многое другое</p>
+          <div class="hero-stats">
+            <div><span class="stat-number">5 МЛН</span><br>позиций</div>
+            <div><span class="stat-number">3</span><br>склада</div>
+            <div><span class="stat-number">> 200</span><br>поставщиков</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- О компании (текст + горизонтальные карточки) -->
+<section id="about" class="section-dark" style="padding:80px 0;">
+      <div class="container">
+        <h2 class="section-title">О компании «РусТекс»</h2>
+          <div class="about-text-full">
+            <p><strong>ООО "РусСтекс"</strong> — это ведущий поставщик электронно-компонентной базы, 
+              специализирующийся на поставках различных электронных компонентов для клиентов из разных отраслей и сфер деятельности. 
+              Компания была основана на принципах высокого профессионализма, качества и надежности, и имеет богатый опыт работы на рынке.</p>
+            </br>
+            <p>Мы стремится к тому, чтобы стать долгосрочным и надежным партнером для своих клиентов. Наши ценности включают:</p>
+          </div>
+          <div class="values-horizontal">
+            <div class="value-card"><i class="fas fa-check"></i></i>
+              <h3>Качество</h3>
+              <p>Компания сотрудничает только с проверенными и надежными производителями, чтобы гарантировать высокое качество поставляемой продукции своим клиентам.</p>
+            </div>
+            <div class="value-card"><i class="fas fa-star"></i></i>
+              <h3>Надежность</h3>
+              <p>Нацелены на долгосрочные партнерские отношения с клиентами, что позволяет обеспечить стабильные и своевременные поставки электронных компонентов.</p>
+            </div>
+            <div class="value-card"><i class="fas fa-fire"></i></i>
+              <h3>Инновации</h3>
+              <p>Компания следит за последними технологическими новинками, чтобы предложить своим клиентам передовые решения и продукцию с высокой степенью инноваций.</p>
+            </div>
+          </div>
+      </div>
+    </section>
+
+  <!-- Преимущества -->
+  <section id="advantages" style="padding: 80px 0;">
+    <div class="container">
+      <h2 class="section-title">Ключевые преимущества</h2>
+      <div class="adv-grid">
+        <div class="adv-card"><i class="fas fa-truck-fast"></i>
+            <h3>Скорость</h3>
+            <p>Наш склад находится в России, Вам не придется, долго ждать</p>
+          </div>
+          <div class="adv-card"><i class="fas fa-thumbs-up"></i>
+            <h3>Качество</h3>
+            <p>Все поставщики проходят сертификацию и входной контроль</p>
+          </div>
+          <div class="adv-card"><i class="fas fa-handshake"></i></i>
+            <h3>Гибкость</h3>
+            <p>Каждому клиенту мы оказываем индивидуальный подход</p>
+          </div>
+          <div class="adv-card"><i class="fas fa-cart-shopping"></i></i>
+            <h3>Ассортимент</h3>
+            <p>Отгружаем со склада и под заказ более 5 млн. позиций</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты + Яндекс.Карта -->
+  <section id="contact" class="section-dark" style="padding: 80px 0;">
+    <div class="container">
+      <div class="contact-info-block">
+        <h2 class="section-title" style="margin-bottom: 20px;">Контакты</h2>
+        <div class="contact-details">
+          <div>
+            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Смольная, 24А</p>
+            <p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-78</p>
+          </div>
+          <div>
+            <p><i class="fas fa-envelope"></i> info@russtecs.ru</p>
+            <p><i class="fas fa-clock"></i> Пн–Пт: 9:00 – 18:00</p>
+          </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?ll=37.483266%2C55.860565&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1Njc4ODE5MhI90KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCh0LzQvtC70YzQvdCw0Y8g0YPQu9C40YbQsCwgMjTQkCIKDd3uFUIVOHFfQg%2C%2C&z=17.12"
+                width="100%" 
+                height="320" 
+                style="border:0; display: block;"
+                allowfullscreen 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <!-- <div class="map-container" id="yandexMap" style="height: 320px;"></div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Нижний блок CTA с кнопкой -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-title">Обратная связь</div>
+      <div class="cta-text">Оставьте заявку, и мы ответим Вам в ближайшее время</div>
+      <button class="btn-glow" id="ctaModalBtn">Оставить заявку</button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 ООО «РусСтекс» — поставки микроэлектроники</p>
+  </div>
+</footer>
+
+<!-- Модальное окно -->
+<div id="requestModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3></h3>
+    <p style="text-align: center;">Укажите ваши контакты и мы свяжемся как можно скорее.</p><br>
+    <form id="modalRequestForm">
+      <input type="text" id="modalName" placeholder="Ваше имя" required>
+      <input type="tel" id="modalPhone" placeholder="Телефон" required>
+      <input type="email" id="modalEmail" placeholder="E-mail (для КП)">
+      <button type="submit">Отправить запрос</button>
+    </form>
+    <div id="modalFormStatus" style="margin-top: 16px; font-size: 0.9rem;"></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
