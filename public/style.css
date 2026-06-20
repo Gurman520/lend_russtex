@@ -5,10 +5,12 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: #0a0c12;
-  color: #eef2ff;
-  scroll-behavior: smooth;
+    /* Цвета: светло-бежевый -> темно-синий -> медно-оранжевый -> темно-бордовый */
+    background: linear-gradient(135deg, #c7b8b2 0%, #252a3d 30%, #d37e61 65%, #3b1d23 100%);
+    background-attachment: fixed; /* Чтобы градиент не "плыл" при прокрутке */
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
 }
 
 .container {
@@ -17,32 +19,136 @@ body {
   padding: 0 24px;
 }
 
-/* Header */
 .header {
-  background: rgba(10, 12, 18, 0.92);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6); /* затемнение */
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('/logo_1_v1.jpeg') center / cover no-repeat;
+  filter: blur(15px);
+  transform: scale(1.1);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.logo a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Header */
+/* .header {
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 80px;
+    
+    /* Градиент из цветов логотипа */
+    /* background: linear-gradient(90deg, #1b263b 0%, #252a3d 100%);
+    border-bottom: 3px solid #d37e61;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000; */
+  /* background: rgba(10, 12, 18, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #2a2e3a;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 100; */
+/* } */
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;   /* перенос на малых экранах */
 }
 
-.navbar {
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;          /* отступы между ссылками и кнопкой */
+    flex-wrap: wrap;
+}
+
+header nav a {
+    font-size: 0.9rem;
+    white-space: nowrap;   /* чтобы текст не переносился */
+}
+
+.btn-glow {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    header nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .logo {
+        text-align: center;
+    }
+}
+
+/* Ссылки в меню */
+header nav a {
+    color: #c7b8b2; 
+    text-decoration: none;
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+/* 
+header nav a.active {
+    color: #d37e61; 
+} */
+
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
   flex-wrap: wrap;
   gap: 16px;
-}
+} */
 
-.logo {
+/* .logo {
   font-size: 1.8rem;
   font-weight: 800;
   background: linear-gradient(135deg, #2b9aff, #7c4dff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+} */
+
+.logo img {
+    height: 50px;
+    border-radius: 12px;          /* скругление углов */
+    background: #ffffff;          /* белый фон под картинкой */
+    padding: 4px;                 /* белая окантовка */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: block;
 }
 
 .logo span {
@@ -356,11 +462,15 @@ body {
 
 /* Футер */
 .footer {
-  background: #05070c;
+  /* Темный градиент для футера (низ страницы) */
+    background: linear-gradient(to top, #221a1c, #2c2638);
+    color: #c7b8b2;
+    padding: 50px;
+  /* background: #05070c;
   padding: 40px 0;
   text-align: center;
   border-top: 1px solid #1e212a;
-  color: #6c727f;
+  color: #6c727f; */
 }
 
 /* Адаптивность */
@@ -371,4 +481,30 @@ body {
   .contact-details {
     flex-direction: column;
   }
+}
+
+/* Общие цвета для тёмных секций */
+.section-dark,
+.contact-info-block,
+.adv-card,
+.value-card,
+.modal-content {
+    color: #eef2ff; /* светлый цвет текста */
+}
+
+/* Дополнительно для параграфов в контактах */
+.contact-details p {
+    color: #cdd6f4;
+}
+
+/* Заголовки внутри тёмных блоков */
+.adv-card h3,
+.value-card h3 {
+    color: #f0f3ff;
+}
+
+/* Для всех текстовых элементов в модалке */
+.modal-content p,
+.modal-content h3 {
+    color: #fff;
 }
