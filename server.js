@@ -27,7 +27,7 @@ const transporter = nodemailer.createTransport({
 
 // API для получения заявок
 app.post('/api/send-request', async (req, res) => {
-  const { name, phone, email, message } = req.body;
+  const { name, phone, email, company, message } = req.body;
 
   // Валидация
   if (!name || !phone) {
@@ -36,12 +36,13 @@ app.post('/api/send-request', async (req, res) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: 'info@russtecs.ru',    //
+    to: process.env.TARGET_MAIL,
     subject: `Новая заявка от ${name}`,
     text: `
       Имя: ${name}
       Телефон: ${phone}
       Email: ${email || 'не указан'}
+      Company: ${company || '-'}
       Сообщение: ${message || '—'}
     `,
     html: `
@@ -49,6 +50,8 @@ app.post('/api/send-request', async (req, res) => {
       <p><strong>Имя:</strong> ${name}</p>
       <p><strong>Телефон:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email || 'не указан'}</p>
+      <p><strong>Компания:</strong> ${company || 'не указан'}</p>
+      <p><strong>Сообщение:</strong> ${message || 'не указан'}</p>
     `
   };
 

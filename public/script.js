@@ -1,5 +1,49 @@
 // Дождаться загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
+  const statItems = document.querySelectorAll('.stat-item');
+  let animated = false;
+
+  // Функция анимации одного числа
+  function animateNumber(element, target, duration = 2000) {
+      const startTime = performance.now();
+      const startValue = 0;
+
+      function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const currentValue = Math.floor(progress * target);
+          element.textContent = currentValue;
+
+          if (progress < 1) {
+              requestAnimationFrame(update);
+          } else {
+              element.textContent = target; // финальное значение
+          }
+      }
+      requestAnimationFrame(update);
+  }
+
+  // Настройка IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !animated) {
+          animated = true;
+          // Запускаем анимацию для каждого .stat-number
+          document.querySelectorAll('.stat-number').forEach((el) => {
+              const target = parseInt(el.dataset.target, 10);
+              if (!isNaN(target)) {
+                  animateNumber(el, target);
+              }
+          });
+          observer.unobserve(entries[0].target);
+      }
+  }, { threshold: 0.3 });
+
+  // Наблюдаем за первым элементом статистики (или оберткой)
+  if (statItems.length) {
+      observer.observe(statItems[0].closest('.hero-stats') || statItems[0]);
+  }
+
+
   // ---------- Плавный скролл для ссылок ----------
   const allLinks = document.querySelectorAll('a[href^="#"]');
   allLinks.forEach(anchor => {
@@ -48,9 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('modalName').value.trim();
       const phone = document.getElementById('modalPhone').value.trim();
       const email = document.getElementById('modalEmail').value.trim();
+      const company = document.getElementById('modalNameCompany').value.trim();
+      const message = document.getElementById('modalMessage').value.trim();
 
-      if (!name || !phone) {
-        if (modalStatus) modalStatus.innerHTML = '<span style="color:#f87171;">Заполните имя и телефон</span>';
+      if (!name || !phone || !company) {
+        if (modalStatus) modalStatus.innerHTML = '<span style="color:#f87171;">Заполните имя, телефон и название компании</span>';
         return;
       }
 
@@ -59,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch('/api/send-request', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, phone, email})
+          body: JSON.stringify({ name, phone, email, company, message})
         });
         const data = await response.json();
         if (response.ok) {
@@ -78,3 +124,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 })
+
+// Инициализация карусели с логотипами
+document.addEventListener('DOMContentLoaded', function () {
+   const swiper = new Swiper('.partners-swiper', {
+    slidesPerView: 5,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 5000, disableOnInteraction: true },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        320: { slidesPerView: 2, spaceBetween: 12 },
+        480: { slidesPerView: 3, spaceBetween: 16 },
+        768: { slidesPerView: 4, spaceBetween: 18 },
+        1024: { slidesPerView: 5, spaceBetween: 20 },
+        1280: { slidesPerView: 6, spaceBetween: 24 },
+    }
+});
+});

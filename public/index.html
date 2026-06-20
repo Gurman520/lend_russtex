@@ -8,6 +8,7 @@
     <meta name="description" content="РусТекс — дистрибьютор микроэлектроники и компонентов. Микроконтроллеры, датчики, силовые модули.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,10 +39,34 @@
           <h1>Электронная компонентная база</h1>
           <p>Специализируемся на поставке различных электронных компонентов, включая полупроводники, интегральные схемы, резисторы, конденсаторы, транзисторы, разъемы и многое другое</p>
           <div class="hero-stats">
-            <div><span class="stat-number">5 МЛН</span><br>позиций</div>
-            <div><span class="stat-number">3</span><br>склада</div>
-            <div><span class="stat-number">> 200</span><br>поставщиков</div>
-        </div>
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="5">0</span>
+                    <span class="stat-suffix">МЛН</span>
+                </div>
+                <span class="stat-label">позиций</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-number" data-target="3">0</span>
+                </div>
+                <span class="stat-label">склада</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-prefix">&gt;</span>
+                    <span class="stat-number" data-target="200">0</span>
+                </div>
+                <span class="stat-label">поставщиков</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number-wrapper">
+                    <span class="stat-prefix">&gt;</span>
+                    <span class="stat-number" data-target="14">0</span>
+                </div>
+                <span class="stat-label">Лет на рынке</span>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -58,17 +83,20 @@
             <p>Мы стремится к тому, чтобы стать долгосрочным и надежным партнером для своих клиентов. Наши ценности включают:</p>
           </div>
           <div class="values-horizontal">
-            <div class="value-card"><i class="fas fa-check"></i></i>
-              <h3>Качество</h3>
-              <p>Компания сотрудничает только с проверенными и надежными производителями, чтобы гарантировать высокое качество поставляемой продукции своим клиентам.</p>
+            <div class="value-card">
+                <i class="fas fa-check"></i>
+                <h3>Качество</h3>
+                <p>Каждый компонент проходит многоступенчатый входной контроль. Мы работаем исключительно с сертифицированными заводами и предоставляем полную документацию на каждую партию. Гарантируем соответствие заявленным характеристикам.</p>
             </div>
-            <div class="value-card"><i class="fas fa-star"></i></i>
-              <h3>Надежность</h3>
-              <p>Нацелены на долгосрочные партнерские отношения с клиентами, что позволяет обеспечить стабильные и своевременные поставки электронных компонентов.</p>
+            <div class="value-card">
+                <i class="fas fa-star"></i>
+                <h3>Надёжность</h3>
+                <p>Собственные склады в России и отлаженная логистика гарантируют поставки точно в срок. Мы ценим доверие клиентов и выполняем обязательства даже при дефиците на рынке. С нами вы всегда уверены в завтрашнем дне.</p>
             </div>
-            <div class="value-card"><i class="fas fa-fire"></i></i>
-              <h3>Инновации</h3>
-              <p>Компания следит за последними технологическими новинками, чтобы предложить своим клиентам передовые решения и продукцию с высокой степенью инноваций.</p>
+            <div class="value-card">
+                <i class="fas fa-fire"></i>
+                <h3>Инновации</h3>
+                <p>Мы первыми на рынке предлагаем новинки от ведущих брендов. Наши инженеры анализируют тренды и помогают подобрать компоненты для самых современных разработок — от IoT до силовой электроники.</p>
             </div>
           </div>
       </div>
@@ -79,34 +107,116 @@
     <div class="container">
       <h2 class="section-title">Ключевые преимущества</h2>
       <div class="adv-grid">
-        <div class="adv-card"><i class="fas fa-truck-fast"></i>
+        <div class="adv-card">
+            <i class="fas fa-truck-fast"></i>
             <h3>Скорость</h3>
-            <p>Наш склад находится в России, Вам не придется, долго ждать</p>
-          </div>
-          <div class="adv-card"><i class="fas fa-thumbs-up"></i>
+            <p>Товар на складе в России — среднее время отгрузки 1–2 дня. Не ждите поставок из-за границы, мы работаем оперативно.</p>
+        </div>
+        <div class="adv-card">
+            <i class="fas fa-thumbs-up"></i>
             <h3>Качество</h3>
-            <p>Все поставщики проходят сертификацию и входной контроль</p>
-          </div>
-          <div class="adv-card"><i class="fas fa-handshake"></i></i>
+            <p>Каждая партия проходит входной контроль в нашей лаборатории. Мы сотрудничаем только с производителями, имеющими международные сертификаты.</p>
+        </div>
+        <div class="adv-card">
+            <i class="fas fa-handshake"></i>
             <h3>Гибкость</h3>
-            <p>Каждому клиенту мы оказываем индивидуальный подход</p>
-          </div>
-          <div class="adv-card"><i class="fas fa-cart-shopping"></i></i>
+            <p>Гибкие условия сотрудничества: работаем с заказами любого объёма, предлагаем отсрочку платежа и индивидуальные условия логистики под ваш проект.</p>
+        </div>
+        <div class="adv-card">
+            <i class="fas fa-cart-shopping"></i>
             <h3>Ассортимент</h3>
-            <p>Отгружаем со склада и под заказ более 5 млн. позиций</p>
-          </div>
+            <p>Более 5 миллионов наименований в каталоге — от резисторов до сложных микросхем. Поставляем как со склада, так и под заказ с короткими сроками.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Производители / Партнёры -->
+  <section id="partners" style="padding: 80px 0;">
+    <div class="container">
+        <h2 class="section-title">Производители</h2>
+        <div class="partners-slider-wrapper">
+          <div class="swiper partners-swiper">
+              <div class="swiper-wrapper">
+                  <!-- Слайд 1 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                        <img src="/logos/Amphenol_Logo.svg" alt="Производитель 1" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 2 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Analog_Devices_Logo.svg" alt="Производитель 2" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 3 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Broadcom_Ltd_Logo.svg" alt="Производитель 3" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 4 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Fujitsu-Logo.svg" alt="Производитель 4" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 5 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Honeywell_logo.svg" alt="Производитель 5" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 6 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Intel_logo.svg" alt="Производитель 6" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 7 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Kyocera_logo.svg" alt="Производитель 7" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 8 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/Microchip_logo.svg" alt="Производитель 8" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 9 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/NXP-Logo.svg" alt="Производитель 9" loading="lazy">
+                      </div>
+                  </div>
+                  <!-- Слайд 10 -->
+                  <div class="swiper-slide">
+                      <div class="partner-card">
+                          <img src="/logos/TexasInstruments-Logo.svg" alt="Производитель 10" loading="lazy">
+                      </div>
+                  </div>
+              </div>
+              <!-- Пагинация (точки) -->
+              <div class="swiper-pagination"></div>
+            </div>
+            <!-- Кнопки навигации -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+  </section>  
+
   <!-- Контакты + Яндекс.Карта -->
-  <section id="contact" class="section-dark" style="padding: 80px 0;">
+  <section id="contact" style="padding: 80px 0;">
     <div class="container">
       <div class="contact-info-block">
         <h2 class="section-title" style="margin-bottom: 20px;">Контакты</h2>
         <div class="contact-details">
           <div>
-            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Смольная, 24А</p>
+            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Авиаконструктора Петлякова, 13 офис. 71</p>
             <p><i class="fas fa-phone-alt"></i> +7 904 995 51 19</p>
           </div>
           <div>
@@ -116,7 +226,7 @@
         </div>
         <div class="map-container">
             <iframe 
-                src="https://yandex.ru/map-widget/v1/?ll=37.483266%2C55.860565&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1Njc4ODE5MhI90KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCh0LzQvtC70YzQvdCw0Y8g0YPQu9C40YbQsCwgMjTQkCIKDd3uFUIVOHFfQg%2C%2C&z=17.12"
+                src="https://yandex.ru/map-widget/v1/?ll=37.304878%2C55.620662&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1Njg4MTc5NxLDAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQstCwLCDQndC-0LLQvtC80L7RgdC60L7QstGB0LrQuNC5INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQuNCy0L3Ri9C5INC-0LrRgNGD0LMsINGA0LDQudC-0L0g0JLQvdGD0LrQvtCy0L4sINGD0LvQuNGG0LAg0JDQstC40LDQutC-0L3RgdGC0YDRg9C60YLQvtGA0LAg0J_QtdGC0LvRj9C60L7QstCwLCAxMyIKDTI4FUIVj3teQg%2C%2C&z=16.9"
                 width="100%" 
                 height="320" 
                 style="border:0; display: block;"
@@ -125,7 +235,6 @@
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
-        <!-- <div class="map-container" id="yandexMap" style="height: 320px;"></div> -->
       </div>
     </div>
   </section>
@@ -156,11 +265,14 @@
       <input type="text" id="modalName" placeholder="Ваше имя" required>
       <input type="tel" id="modalPhone" placeholder="Телефон" required>
       <input type="email" id="modalEmail" placeholder="E-mail (для КП)">
+      <input type="text" id="modalNameCompany" placeholder="Название компании" required>
+      <textarea id="modalMessage" rows="3" placeholder="Ваш запрос"></textarea>
       <button type="submit">Отправить запрос</button>
     </form>
     <div id="modalFormStatus" style="margin-top: 16px; font-size: 0.9rem;"></div>
   </div>
 </div>
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

@@ -48,28 +48,6 @@ html {
 }
 
 /* Header */
-/* .header {
-   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    height: 80px;
-    
-    /* Градиент из цветов логотипа */
-    /* background: linear-gradient(90deg, #1b263b 0%, #252a3d 100%);
-    border-bottom: 3px solid #d37e61;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000; */
-  /* background: rgba(10, 12, 18, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #2a2e3a;
-  position: sticky;
-  top: 0;
-  z-index: 100; */
-/* } */
-
 .header .container {
     display: flex;
     align-items: center;
@@ -119,28 +97,6 @@ header nav a {
     font-weight: 600;
     letter-spacing: 1px;
 }
-/* 
-header nav a.active {
-    color: #d37e61; 
-} */
-
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  flex-wrap: wrap;
-  gap: 16px;
-} */
-
-/* .logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #2b9aff, #7c4dff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-} */
 
 .logo img {
     height: 50px;
@@ -193,6 +149,93 @@ header nav a.active {
 }
 
 /* Hero */
+/* Блок статистики */
+.hero-stats {
+    display: flex;
+    gap: 50px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(4px);
+    border-radius: 32px;
+    padding: 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 140px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.4s; }
+
+.stat-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(43, 154, 255, 0.15);
+}
+
+.stat-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #2b9aff;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-suffix,
+.stat-prefix {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #93c5fd;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #cdd6f4;
+    letter-spacing: 0.5px;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .hero-stats {
+        gap: 20px;
+        justify-content: center;
+    }
+    .stat-item {
+        min-width: 100px;
+        padding: 16px 20px;
+    }
+    .stat-number {
+        font-size: 2.4rem;
+    }
+    .stat-suffix,
+    .stat-prefix {
+        font-size: 1.4rem;
+    }
+}
+
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -229,24 +272,6 @@ header nav a.active {
   color: #9ca3af;
   margin-bottom: 32px;
   max-width: 90%;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 32px;
-}
-
-.stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #2b9aff;
-}
-
-.hero-image img {
-  max-width: 100%;
-  border-radius: 32px;
-  filter: drop-shadow(0 0 12px rgba(43, 154, 255, 0.3));
 }
 
 /* Секции */
@@ -507,4 +532,158 @@ header nav a.active {
 .modal-content p,
 .modal-content h3 {
     color: #fff;
+}
+
+/* ===== Блок «Производители» (карусель) ===== */
+#partners {
+    background: #0f111a;
+}
+
+.partners-swiper {
+    padding: 20px 0 60px; /* место для пагинации */
+    overflow: hidden;
+}
+
+/* ===== Обёртка карусели ===== */
+.partners-slider-wrapper {
+    position: relative;
+    padding: 0 50px; /* отступы для стрелок */
+    margin: 0 -20px; /* компенсация отступов контейнера, чтобы стрелки не упирались в края */
+}
+
+/* ===== Карусель ===== */
+.partners-swiper {
+    overflow: hidden; /* важно, чтобы слайды не вылезали */
+}
+
+/* ===== Стрелки навигации ===== */
+.partners-slider-wrapper .swiper-button-next,
+.partners-slider-wrapper .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none; /* запрет выделения текста */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 10;
+    color: #fff;
+}
+
+.partners-slider-wrapper .swiper-button-prev {
+    left: 0;
+}
+
+.partners-slider-wrapper .swiper-button-next {
+    right: 0;
+}
+
+.partners-slider-wrapper .swiper-button-next:hover,
+.partners-slider-wrapper .swiper-button-prev:hover {
+    background: rgba(43, 154, 255, 0.7);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Переопределяем стандартные иконки Swiper (стрелки) */
+.partners-slider-wrapper .swiper-button-next::after,
+.partners-slider-wrapper .swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* ===== Пагинация (точки) ===== */
+.partners-swiper .swiper-pagination {
+    bottom: 0;
+}
+
+.partners-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+}
+
+.partners-swiper .swiper-pagination-bullet-active {
+    background: #2b9aff;
+}
+
+/* ===== Карточки партнёров ===== */
+.partner-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    cursor: default;
+    aspect-ratio: 1 / 0.8;
+    width: 100%;
+    height: 100%;
+}
+
+.partner-card img {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    display: block;
+    filter: none;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+}
+
+.partner-card:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: #2b9aff;
+    box-shadow: 0 8px 25px rgba(43, 154, 255, 0.3);
+    transform: translateY(-6px);
+}
+
+.partner-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 768px) {
+    .partners-slider-wrapper {
+        padding: 0 30px;
+        margin: 0 -10px;
+    }
+    .partners-slider-wrapper .swiper-button-next,
+    .partners-slider-wrapper .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+    }
+    .partners-slider-wrapper .swiper-button-next::after,
+    .partners-slider-wrapper .swiper-button-prev::after {
+        font-size: 14px;
+    }
+    .partner-card {
+        padding: 14px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-slider-wrapper {
+        padding: 0 20px;
+    }
+    .partners-slider-wrapper .swiper-button-next,
+    .partners-slider-wrapper .swiper-button-prev {
+        width: 30px;
+        height: 30px;
+    }
+    .partners-slider-wrapper .swiper-button-next::after,
+    .partners-slider-wrapper .swiper-button-prev::after {
+        font-size: 12px;
+    }
 }

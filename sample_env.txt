@@ -1,0 +1,4 @@
+EMAIL_USER=          # email для SMTP
+EMAIL_PASS=          # Пароль приложения (не обычный пароль)
+TARGET_MAIL=         # email на который шлем письма
+PORT=3000
