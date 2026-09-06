@@ -149,3 +149,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 });
+
+// ---------- Загрузка категорий для главной страницы ----------
+async function loadCategoriesPreview() {
+  const container = document.getElementById('categoryGrid');
+  if (!container) return;
+
+  try {
+    const response = await fetch('/api/categories/preview?limit=6');
+    if (!response.ok) throw new Error('Network response was not ok');
+    const categories = await response.json();
+
+    if (categories.length === 0) {
+      container.innerHTML = '<p style="color:#9ca3af; text-align:center; grid-column:1/-1;">Категории временно отсутствуют</p>';
+      return;
+    }
+
+    container.innerHTML = categories.map(cat => `
+      <div class="category-item">
+        <img src="${cat.image}" alt="${cat.name}" loading="lazy">
+        <h4>${cat.name}</h4>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Ошибка загрузки категорий:', error);
+    container.innerHTML = '<p style="color:#f87171; text-align:center; grid-column:1/-1;">Не удалось загрузить категории</p>';
+  }
+}
+
+// Вызываем функцию, если есть блок на странице
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('categoryGrid')) {
+    loadCategoriesPreview();
+  }
+});

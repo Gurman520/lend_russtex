@@ -3,6 +3,8 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const mongoose = require('mongoose');
+const Category = require('./models/Category');
 require('dotenv').config();
 
 const app = express();
@@ -13,6 +15,49 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Подключение к MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// ---------- API ----------
+// Получить все категории
+app.get('/api/categories', async (req, res) => {
+  try {
+    const categories = await Category.find().sort({ order: 1 });
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Получить ограниченное количество (для главной)
+app.get('/api/categories/preview', async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 6;
+    const categories = await Category.find().sort({ order: 1 }).limit(limit);
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// (Опционально) Добавить категорию – для админки позже
+app.post('/api/categories', async (req, res) => {
+  try {
+    const { name, image, description, order } = req.body;
+    const newCategory = new Category({ name, image, description, order });
+    await newCategory.save();
+    res.status(201).json(newCategory);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
+
 
 // Настройка транспортера для отправки писем (пример для Yandex)
 const transporter = nodemailer.createTransport({

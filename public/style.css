@@ -10,6 +10,7 @@ body {
     background-attachment: fixed; /* Чтобы градиент не "плыл" при прокрутке */
     min-height: 100vh;
     margin: 0;
+    width: 100%;
     font-family: sans-serif;
 }
 
@@ -17,6 +18,13 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.container-hero {
+  background-image: url('/images/hero.gif');
+  background-size: cover;      /* Масштабирует под размер блока */
+  background-repeat: no-repeat; /* Не повторяем */
+  background-position: center;  /* Центрируем */
 }
 
 .header {
@@ -33,7 +41,7 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   background: url('/logo_1_v1.jpeg') center / cover no-repeat;
   filter: blur(15px);
-  transform: scale(1.1);
+  transform: scale(1.3);
   opacity: 0.8;
   z-index: -1;
 }
@@ -102,7 +110,7 @@ header nav a {
     height: 50px;
     border-radius: 12px;          /* скругление углов */
     background: #ffffff;          /* белый фон под картинкой */
-    padding: 4px;                 /* белая окантовка */
+    padding: 0.5px;                 /* белая окантовка */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     display: block;
 }
@@ -155,12 +163,13 @@ header nav a {
     gap: 50px;
     margin: 32px 0;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .stat-item {
     text-align: center;
     background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(7px);
     border-radius: 32px;
     padding: 20px 30px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -241,7 +250,9 @@ header nav a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 0 80px;
+  /* padding: 60px 0 80px; */
+  /* margin: 0 auto; */
+  padding: 60px 24px;
   gap: 40px;
 }
 
@@ -254,6 +265,7 @@ header nav a {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -268,8 +280,8 @@ header nav a {
 }
 
 .hero p {
-  font-size: 1.2rem;
-  color: #9ca3af;
+  font-size: 1.4rem;
+  color: #fcfafa;
   margin-bottom: 32px;
   max-width: 90%;
 }
@@ -686,4 +698,91 @@ header nav a {
     .partners-slider-wrapper .swiper-button-prev::after {
         font-size: 12px;
     }
+}
+
+/* ===== Каталог ===== */
+.catalog-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #cdd6f4;
+  font-size: 1.1rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.category-item {
+  background: #131722;
+  border: 1px solid #2a2e3a;
+  border-radius: 28px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.category-item:hover {
+  border-color: #2b9aff;
+  transform: translateY(-4px);
+}
+
+.category-item img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.category-item h4 {
+  font-size: 1rem;
+  color: #eef2ff;
+}
+
+.catalog-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Дополнительные стили для страницы каталога */
+.catalog-page {
+  padding: 80px 0;
+}
+.catalog-page .category-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #2b9aff;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Стиль для кнопки "На главную" на странице каталога */
+.back-link {
+  display: inline-block;
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid #2b9aff;
+  border-radius: 40px;
+  color: #2b9aff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+.back-link i {
+  margin-right: 8px;
+}
+.back-link:hover {
+  background: #2b9aff;
+  color: #0a0c12;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(43, 154, 255, 0.4);
 }
