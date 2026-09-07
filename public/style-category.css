@@ -1,0 +1,195 @@
+.category-page {
+    padding: 80px 0;
+}
+.category-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+.category-header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    flex: 1;
+}
+.category-header .desc {
+    flex: 1;
+    color: #cdd6f4;
+    font-size: 1.1rem;
+}
+.subcategory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+.subcategory-item {
+    background: #131722;
+    border: 1px solid #2a2e3a;
+    border-radius: 28px;
+    padding: 20px 15px;
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: #eef2ff;
+}
+.subcategory-item:hover {
+    border-color: #2b9aff;
+    transform: translateY(-4px);
+}
+.subcategory-item img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+.product-card {
+    background: #131722;
+    border: 1px solid #2a2e3a;
+    border-radius: 28px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.2s;
+}
+.product-card:hover {
+    border-color: #2b9aff;
+    transform: translateY(-4px);
+}
+.product-card img {
+    width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+.product-card h4 {
+    font-size: 1rem;
+    color: #eef2ff;
+}
+.product-card .article {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1a1f2b;
+    border-radius: 40px;
+    color: #cdd6f4;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.pagination a:hover {
+    background: #2b9aff;
+    color: #0a0c12;
+}
+.pagination .active {
+    background: #2b9aff;
+    color: #0a0c12;
+    font-weight: 600;
+}
+.back-link {
+    display: inline-block;
+    padding: 10px 28px;
+    background: transparent;
+    border: 2px solid #2b9aff;
+    border-radius: 40px;
+    color: #2b9aff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+.back-link i {
+    margin-right: 8px;
+}
+.back-link:hover {
+    background: #2b9aff;
+    color: #0a0c12;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(43, 154, 255, 0.4);
+}
+@media (max-width: 800px) {
+    .category-header { flex-direction: column; text-align: center; }
+}
+
+/* Стиль для блока информации о категории */
+.category-info-box {
+  background: #0f111a;
+  border: 1px solid #2a2e3a;
+  border-radius: 40px;
+  padding: 60px 80px;           /* увеличенные отступы для ширины */
+  margin-bottom: 48px;
+  transition: 0.2s;
+}
+
+.category-info-box .category-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;  /* заголовок слева, описание справа */
+}
+
+.category-info-box .category-header h1,
+.category-info-box .category-header .desc {
+  flex: 1 1 0;          /* равные доли */
+  min-width: 0;          /* предотвращает переполнение */
+}
+
+.category-info-box .category-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: left;
+}
+
+.category-info-box .category-header .desc {
+  /* flex: 1; */
+  color: #cdd6f4;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: right;           /* выравнивание по правому краю */
+  /* max-width: 600px;            ограничим ширину, чтобы не растягивалось слишком */
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 800px) {
+  .category-info-box {
+    padding: 28px 24px;
+  }
+  .category-info-box .category-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  .category-info-box .category-header h1,
+  .category-info-box .category-header .desc {
+    flex: none;          /* сбрасываем равные доли */
+    width: 100%;         /* занимают всю ширину */
+  }
+  .category-info-box .category-header .desc {
+    text-align: center; /* на мобильных центрируем */
+  }
+  .category-info-box .category-header h1 {
+    font-size: 2rem;
+  }
+}

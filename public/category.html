@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Категория — РусТекс</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-category.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="logo">
+        <a href="/" style="display: inline-block; text-decoration: none;">
+          <img src="/logo_1_v1.jpeg" alt="РусСтекС" style="height: 50px;">
+        </a>
+    </div>
+    
+    <nav>
+        <a href="#contact">Контакты</a>
+        <button class="btn-glow" id="openModalBtn">Оставить заявку</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container category-page">
+    <a href="/catalog.html" class="back-link"><i class="fas fa-arrow-left"></i> Назад к каталогу</a>
+    <div id="categoryContent">
+      <!-- Сюда динамически загрузится содержимое -->
+    </div>
+  </div>
+
+  <hr class="gradient-hr">
+
+      <!-- Контакты + Яндекс.Карта -->
+  <section id="contact" style="padding: 80px 0;">
+    <div class="container">
+      <div class="contact-info-block">
+        <h2 class="section-title" style="margin-bottom: 20px;">Контакты</h2>
+        <div class="contact-details">
+          <div>
+            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Авиаконструктора Петлякова, 13 офис. 71</p>
+            <p><i class="fas fa-phone-alt"></i> +7 904 995 51 19</p>
+          </div>
+          <div>
+            <p><i class="fas fa-envelope"></i> info@russtecs.ru</p>
+            <p><i class="fas fa-clock"></i> Пн–Пт: 9:00 – 18:00</p>
+          </div>
+        </div>
+        <div class="map-container">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?ll=37.304878%2C55.620662&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1Njg4MTc5NxLDAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQstCwLCDQndC-0LLQvtC80L7RgdC60L7QstGB0LrQuNC5INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQuNCy0L3Ri9C5INC-0LrRgNGD0LMsINGA0LDQudC-0L0g0JLQvdGD0LrQvtCy0L4sINGD0LvQuNGG0LAg0JDQstC40LDQutC-0L3RgdGC0YDRg9C60YLQvtGA0LAg0J_QtdGC0LvRj9C60L7QstCwLCAxMyIKDTI4FUIVj3teQg%2C%2C&z=16.9"
+                width="100%" 
+                height="320" 
+                style="border:0; display: block;"
+                allowfullscreen 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Нижний блок CTA с кнопкой -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-title">Обратная связь</div>
+      <div class="cta-text">Оставьте заявку, и мы ответим Вам в ближайшее время</div>
+      <button class="btn-glow" id="ctaModalBtn">Оставить заявку</button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 ООО «РусТекс» — поставки микроэлектроники.</p>
+  </div>
+</footer>
+
+<!-- Модальное окно -->
+<div id="requestModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3></h3>
+    <p style="text-align: center;">Укажите ваши контакты и мы свяжемся как можно скорее.</p><br>
+    <form id="modalRequestForm">
+      <input type="text" id="modalName" placeholder="Ваше имя" required>
+      <input type="tel" id="modalPhone" placeholder="Телефон" required>
+      <input type="email" id="modalEmail" placeholder="E-mail (для КП)">
+      <input type="text" id="modalNameCompany" placeholder="Название компании" required>
+      <textarea id="modalMessage" rows="3" placeholder="Ваш запрос"></textarea>
+      <button type="submit">Отправить запрос</button>
+    </form>
+    <div id="modalFormStatus" style="margin-top: 16px; font-size: 0.9rem;"></div>
+  </div>
+</div>
+
+<script src="category.js"></script>
+</body>
+</html>

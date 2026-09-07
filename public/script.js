@@ -166,10 +166,10 @@ async function loadCategoriesPreview() {
     }
 
     container.innerHTML = categories.map(cat => `
-      <div class="category-item">
+      <a href="/category.html?id=${cat._id}" class="category-item" style="text-decoration:none; color:inherit;">
         <img src="${cat.image}" alt="${cat.name}" loading="lazy">
         <h4>${cat.name}</h4>
-      </div>
+      </a>
     `).join('');
   } catch (error) {
     console.error('Ошибка загрузки категорий:', error);
@@ -183,3 +183,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCategoriesPreview();
   }
 });
+

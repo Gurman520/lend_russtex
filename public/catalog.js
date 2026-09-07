@@ -1,3 +1,26 @@
+  // ---------- Модальное окно ----------
+  const modal = document.getElementById('requestModal');
+  const openModalBtns = document.querySelectorAll('#openModalBtn, #heroModalBtn, #ctaModalBtn');
+  const closeModalBtn = document.querySelector('.close-modal');
+
+  function openModal() {
+    if (modal) modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    if (modal) modal.style.display = 'none';
+  }
+
+  openModalBtns.forEach(btn => {
+    if (btn) btn.addEventListener('click', openModal);
+  });
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (modal) {
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- Модальное окно (аналогично главной) ----------
   const modal = document.getElementById('requestModal');
@@ -51,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         grid.innerHTML = categories.map(cat => `
-          <div class="category-item">
+          <a href="/category.html?id=${cat._id}" class="category-item" style="text-decoration:none; color:inherit;">
             <img src="${cat.image}" alt="${cat.name}" loading="lazy">
             <h4>${cat.name}</h4>
-          </div>
+          </a>
         `).join('');
       })
       .catch(err => {

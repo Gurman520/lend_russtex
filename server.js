@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Получить все категории
 app.get('/api/categories', async (req, res) => {
   try {
-    const categories = await Category.find().sort({ order: 1 });
+    const categories = await Category.find({ parent: null }).sort({ order: 1 });
     res.json(categories);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -37,8 +37,58 @@ app.get('/api/categories', async (req, res) => {
 app.get('/api/categories/preview', async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 6;
-    const categories = await Category.find().sort({ order: 1 }).limit(limit);
+    const categories = await Category.find({ parent: null }).sort({ order: 1 }).limit(limit);
     res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ---------- Категории + подкатегории ----------
+app.get('/api/categories/:id', async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id).lean();
+    if (!category) return res.status(404).json({ error: 'Категория не найдена' });
+    // Получаем подкатегории
+    const children = await Category.find({ parent: category._id }).sort({ order: 1 }).lean();
+    res.json({ category, children });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ---------- Товары категории с пагинацией ----------
+app.get('/api/categories/:id/products', async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 40;
+    const skip = (page - 1) * limit;
+
+    const categoryId = req.params.id;
+    // Проверяем, есть ли подкатегории у этой категории
+    const children = await Category.find({ parent: categoryId }).lean();
+    let productQuery = { category: categoryId };
+
+    // Если есть подкатегории, то возвращаем товары только этой категории (не включая подкатегории)
+    // Но мы можем решить: если есть подкатегории, то не показываем товары на этом уровне (или показываем только товары этой категории)
+    // По ТЗ: если есть подкатегории → показываем их, а товары показываем на уровне подкатегорий.
+    // Поэтому если есть дети, возвращаем пустой массив товаров.
+    if (children.length > 0) {
+      return res.json({ products: [], total: 0, page, totalPages: 0 });
+    }
+
+    const total = await Product.countDocuments(productQuery);
+    const products = await Product.find(productQuery)
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    res.json({
+      products,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit)
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -55,9 +105,6 @@ app.post('/api/categories', async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
-
-
-
 
 // Настройка транспортера для отправки писем (пример для Yandex)
 const transporter = nodemailer.createTransport({
