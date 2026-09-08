@@ -2,12 +2,6 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Category from './models/Category.js';
 
-const count = await Category.countDocuments();
-if (count > 0) {
-  console.log('Данные уже существуют, пропускаем seed');
-  process.exit(0);
-}
-
 const categories = [
   { name: 'Полупроводниковые компаненты', slug: 'Poluprovodnikovye-komponenty', 
     description:"Полупроводники являются материалами, чья проводимость лежит между проводниками (например, металлами) и изоляторами (например, стеклом). Основными полупроводниковыми материалами являются кремний (Si) и германий (Ge), хотя также используются и другие материалы. Полупроводниковые компоненты широко применяются в различных устройствах электроники и микроэлектроники"
@@ -72,13 +66,13 @@ async function seed() {
 
     // Создаём корневые категории
     const created = {};
-    for (const cat of categoriesData) {
+    for (const cat of categories) {
       const doc = await Category.create(cat);
       created[cat.name] = doc._id;
     }
 
     // Создаём подкатегории
-    for (const sub of subcategoriesData) {
+    for (const sub of subcategories) {
       const parentId = created[sub.parent];
       if (parentId) {
         await Category.create({ ...sub, parent: parentId });
