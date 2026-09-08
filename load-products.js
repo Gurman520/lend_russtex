@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
-const fs = require('fs');
-const csv = require('csv-parser');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import fs from 'fs';
+import csv from 'csv-parser';
+import dotenv from 'dotenv';
+import Category from './models/Category.js';
+import Product from './models/Product.js';
 
-const Category = require('./models/Category');
-const Product = require('./models/Product');
+dotenv.config();
 
 const CATEGORY_SEPARATOR = '/';
 

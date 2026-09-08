@@ -10,7 +10,7 @@
 // module.exports = mongoose.model('Category', CategorySchema);
 
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const CategorySchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -21,4 +21,4 @@ const CategorySchema = new mongoose.Schema({
   order: { type: Number, default: 0 }
 });
 
-module.exports = mongoose.model('Category', CategorySchema);
+export default mongoose.model('Category', CategorySchema);

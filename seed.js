@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
-const Category = require('./models/Category');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import Category from './models/Category.js';
 
 const count = await Category.countDocuments();
 if (count > 0) {
