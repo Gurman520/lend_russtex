@@ -59,38 +59,40 @@ const subcategories = [
 ];
 
 async function seed() {
-  await mongoose.connect(process.env.MONGODB_URI);
-  await Category.deleteMany({});
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('✅ Connected to MongoDB');
 
-  // Сначала создаём корневые, запоминаем их id по имени
-  const created = {};
-  for (const cat of categories) {
-    const doc = await Category.create(cat);
-    created[cat.name] = doc._id;
-  }
-
-  // Теперь подкатегории
-  for (const sub of subcategories) {
-    const parentId = created[sub.parent];
-    if (parentId) {
-      await Category.create({ ...sub, parent: parentId });
-    } else {
-      console.warn(`Родитель ${sub.parent} не найден`);
+    // Проверяем, есть ли уже категории
+    const count = await Category.countDocuments();
+    if (count > 0) {
+      console.log('Данные уже существуют, пропускаем seed');
+      process.exit(0);
     }
-  }
 
-  console.log('✅ Категории и подкатегории добавлены');
-  process.exit();
+    // Создаём корневые категории
+    const created = {};
+    for (const cat of categoriesData) {
+      const doc = await Category.create(cat);
+      created[cat.name] = doc._id;
+    }
+
+    // Создаём подкатегории
+    for (const sub of subcategoriesData) {
+      const parentId = created[sub.parent];
+      if (parentId) {
+        await Category.create({ ...sub, parent: parentId });
+      } else {
+        console.warn(`Родитель ${sub.parent} не найден`);
+      }
+    }
+
+    console.log('✅ Категории и подкатегории добавлены');
+    process.exit(0);
+  } catch (err) {
+    console.error('❌ Ошибка seed:', err);
+    process.exit(1);
+  }
 }
 
-seed().catch(err => { console.error(err); process.exit(1); });
-
-
-// mongoose.connect(process.env.MONGODB_URI)
-//   .then(async () => {
-//     await Category.deleteMany({});
-//     await Category.insertMany(categories);
-//     console.log('Категории добавлены');
-//     process.exit();
-//   })
-//   .catch(err => console.error(err));
+seed();
