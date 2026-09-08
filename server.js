@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 const Category = require('./models/Category');
+const Product = require('./models/Product');
 require('dotenv').config();
 
 const app = express();

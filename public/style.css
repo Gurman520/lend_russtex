@@ -797,3 +797,36 @@ hr.gradient-hr {
     rgba(0,0,0,0) 100%
   );
 }
+
+/* Чекбокс согласия */
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  color: #cdd6f4;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: #2b9aff;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.checkbox-group a {
+  color: #2b9aff;
+  text-decoration: underline;
+}
+
+.checkbox-group a:hover {
+  color: #7c4dff;
+}

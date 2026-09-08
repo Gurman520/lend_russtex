@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const Category = require('./models/Category');
 
+const count = await Category.countDocuments();
+if (count > 0) {
+  console.log('Данные уже существуют, пропускаем seed');
+  process.exit(0);
+}
+
 const categories = [
   { name: 'Полупроводниковые компаненты', slug: 'Poluprovodnikovye-komponenty', 
     description:"Полупроводники являются материалами, чья проводимость лежит между проводниками (например, металлами) и изоляторами (например, стеклом). Основными полупроводниковыми материалами являются кремний (Si) и германий (Ge), хотя также используются и другие материалы. Полупроводниковые компоненты широко применяются в различных устройствах электроники и микроэлектроники"
@@ -27,12 +33,29 @@ const categories = [
 ];
 
 const subcategories = [
+  // Полупроводниковые компаненты
   { name: 'Беспроводные радиочастотные полупроводники', slug: 'besprovodnye-radiochastotnye-poluprovodniki', image: '/images/besprovodnye-radiochastotnye-poluprovodniki.png', parent: 'Полупроводниковые компаненты', order: 1 },
   { name: 'Дискретные полупроводники', slug: 'diskretnye-poluprovodniki', image: '/images/diskretnye-poluprovodniki.png', parent: 'Полупроводниковые компаненты', order: 2 },
   { name: 'Интегральные микросхемы', slug: 'integralnye-mikroshemy', image: '/images/integralnye-mikroshemy.png', parent: 'Полупроводниковые компаненты', order: 3 },
   { name: 'Инженерные средства разработки', slug: 'inzhenernye-sredstva-razrabotki', image: '/images/inzhenernye-sredstva-razrabotki.png', parent: 'Полупроводниковые компаненты', order: 4 },
   { name: 'Память Ics', slug: 'pamyat-ics', image: '/images/pamyat-ics.webp', parent: 'Полупроводниковые компаненты', order: 5 },
-  // ... и т.д.
+  // Пассивные компоненты
+  { name: 'Антенны', slug: 'antenny', image: '/images/passiv/antenny.png', parent: 'Пассивные компоненты', order: 1 },
+  { name: 'Варисторы', slug: 'varistory', image: '/images/passiv/varistory.png', parent: 'Пассивные компоненты', order: 2 },
+  { name: 'Измерительные датчики', slug: 'izmeritelnye-datchiki', image: '/images/passiv/izmeritelnye-datchiki.png', parent: 'Пассивные компоненты', order: 3 },
+  { name: 'Индукторы, дроссели и катушки', slug: 'induktory-drosseli-i-katushki', image: '/images/passiv/induktory-drosseli-i-katushki.png', parent: 'Пассивные компоненты', order: 4 },
+  { name: 'Конденсаторы', slug: 'kondensatory', image: '/images/passiv/kondensatory.png', parent: 'Пассивные компоненты', order: 5 },
+  { name: 'Подстроечные элементы и реостаты', slug: 'podstroechnye-elementy-i-reostaty', image: '/images/passiv/podstroechnye-elementy-i-reostaty.png', parent: 'Пассивные компоненты', order: 6 },
+  { name: 'Приборы настройки по частоте и времени', slug: 'pribory-nastrojki-po-chastote-i-vremeni', image: '/images/passiv/pribory-nastrojki-po-chastote-i-vremeni.png', parent: 'Пассивные компоненты', order: 7 },
+  { name: 'Резисторы', slug: 'rezistory', image: '/images/passiv/rezistory.png', parent: 'Пассивные компоненты', order: 8 },
+  { name: 'Термисторы - NTC', slug: 'termistory-ntc', image: '/images/passiv/termistory-ntc.png', parent: 'Пассивные компоненты', order: 9 },
+  { name: 'Термисторы - PTC', slug: 'termistory-ptc', image: '/images/passiv/termistory-ptc.png', parent: 'Пассивные компоненты', order: 10 },
+  { name: 'Трансформаторы сигнала', slug: 'transformatory-signala', image: '/images/passiv/transformatory-signala.png', parent: 'Пассивные компоненты', order: 11 },
+  { name: 'Ферриты', slug: 'ferrity', image: '/images/passiv/ferrity.png', parent: 'Пассивные компоненты', order: 12 },
+  { name: 'Фильтры электромагнитных помех и подавления ЭМП', slug: 'filtry-elektromagnitnyh-pomeh-i-podavleniya-emp', image: '/images/passiv/filtry-elektromagnitnyh-pomeh-i-podavleniya-emp.png', parent: 'Пассивные компоненты', order: 13 },
+  { name: 'Формирование сигнала', slug: 'formirovanie-signala', image: '/images/passiv/formirovanie-signala.png', parent: 'Пассивные компоненты', order: 14 },
+  // Соединители
+  
 ];
 
 async function seed() {

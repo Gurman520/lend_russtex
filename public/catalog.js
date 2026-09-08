@@ -22,46 +22,6 @@
   }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ---------- Модальное окно (аналогично главной) ----------
-  const modal = document.getElementById('requestModal');
-  const openModalBtn = document.getElementById('openModalBtn');
-  const closeModalBtn = document.querySelector('.close-modal');
-  if (openModalBtn) openModalBtn.addEventListener('click', () => modal.style.display = 'flex');
-  if (closeModalBtn) closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
-  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-
-  // ---------- Отправка формы (такая же) ----------
-  const form = document.getElementById('modalRequestForm');
-  const status = document.getElementById('modalFormStatus');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('modalName').value.trim();
-    const phone = document.getElementById('modalPhone').value.trim();
-    const email = document.getElementById('modalEmail').value.trim();
-    const message = document.getElementById('modalMessage').value.trim();
-    if (!name || !phone) {
-      status.innerHTML = '<span style="color:#f87171;">Заполните имя и телефон</span>';
-      return;
-    }
-    status.innerHTML = 'Отправка...';
-    try {
-      const resp = await fetch('/api/send-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, email, message })
-      });
-      const data = await resp.json();
-      if (resp.ok) {
-        status.innerHTML = '<span style="color:#4ade80;">✓ Заявка отправлена!</span>';
-        form.reset();
-        setTimeout(() => { modal.style.display = 'none'; status.innerHTML = ''; }, 2000);
-      } else {
-        status.innerHTML = `<span style="color:#f87171;">Ошибка: ${data.error}</span>`;
-      }
-    } catch (err) {
-      status.innerHTML = '<span style="color:#f87171;">Ошибка сети</span>';
-    }
-  });
 
   // ---------- Загрузка всех категорий ----------
   const grid = document.getElementById('allCategoriesGrid');

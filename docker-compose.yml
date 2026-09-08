@@ -1,18 +1,62 @@
 version: '3.8'
 
 services:
+  # MongoDB
   mongodb:
-    image: mongo:latest
+    image: mongo:7
     container_name: rusteks-mongo
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: secret
-      MONGO_INITDB_DATABASE: rusteks
     ports:
-      - "27017:27017"
+      - "27017:27017"   # опционально для внешнего доступа 
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: rusteks
     volumes:
       - mongo-data:/data/db
+    networks:
+      - rusteks-net
+
+  # Node.js приложение
+  app:
+    build: .
+    container_name: rusteks-app
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://root:example@mongodb:27017/rusteks?authSource=admin
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - TARGET_MAIL=${TARGET_MAIL}
+      - PORT=3000
+    volumes:
+      - ./public:/app/public   # для удобства разработки
+    networks:
+      - rusteks-net
+    # Запускаем seed перед сервером
+    command: sh -c "node seed.js && node server.js"
+
+  # Nginx (реверс-прокси)
+  nginx:
+    image: nginx:alpine
+    container_name: rusteks-nginx
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"   # HTTPS, если настроите сертификаты
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      # Если есть SSL-сертификаты, раскомментируйте:
+      # - ./ssl:/etc/nginx/ssl:ro
+    networks:
+      - rusteks-net
 
 volumes:
   mongo-data:
+
+networks:
+  rusteks-net:
+    driver: bridge

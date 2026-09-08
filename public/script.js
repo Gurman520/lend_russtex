@@ -94,6 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('modalEmail').value.trim();
       const company = document.getElementById('modalNameCompany').value.trim();
       const message = document.getElementById('modalMessage').value.trim();
+      const consent = document.getElementById('modalConsent');
+
+      if (!consent.checked) {
+        if (modalStatus) modalStatus.innerHTML = '<span style="color:#f87171;">Подтвердите согласие на обработку данных</span>';
+        return;
+      }
 
       if (!name || !phone || !company) {
         if (modalStatus) modalStatus.innerHTML = '<span style="color:#f87171;">Заполните имя, телефон и название компании</span>';

@@ -286,6 +286,10 @@
       <input type="email" id="modalEmail" placeholder="E-mail (для КП)">
       <input type="text" id="modalNameCompany" placeholder="Название компании" required>
       <textarea id="modalMessage" rows="3" placeholder="Ваш запрос"></textarea>
+      <div class="checkbox-group">
+        <input type="checkbox" id="modalConsent" required>
+        <label for="modalConsent">Я ознакомлен с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label>
+      </div>
       <button type="submit">Отправить запрос</button>
     </form>
     <div id="modalFormStatus" style="margin-top: 16px; font-size: 0.9rem;"></div>

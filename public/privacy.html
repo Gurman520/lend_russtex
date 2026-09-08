@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог компонентов — РусТекс</title>
+  <title>Политика конфиденциальности — РусТекс</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-privacy.css">
 </head>
 <body>
-
 <header class="header">
   <div class="container">
     <div class="logo">
@@ -27,15 +27,37 @@
 </header>
 
 <main>
-    <div class="container catalog-page">
-        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
-        <h1 class="section-title">Все категории компонентов</h1>
-        <div id="allCategoriesGrid" class="category-grid">
-        <!-- Сюда загрузятся все категории -->
-        </div>
-    </div>
+  <div class="container privacy-page">
+    <div class="privacy-content">
+      <h1>Политика конфиденциальности</h1>
+      <p><strong>1. Общие положения</strong><br>
+      Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ООО «РусТекс» (далее – Оператор).</p>
 
-    <!-- Контакты + Яндекс.Карта -->
+      <p><strong>2. Какие данные мы собираем</strong><br>
+      Оператор может обрабатывать следующие персональные данные пользователя: имя, телефон, адрес электронной почты, а также иные данные, которые пользователь самостоятельно указывает в форме обратной связи.</p>
+
+      <p><strong>3. Цели обработки</strong><br>
+      Обработка персональных данных осуществляется в целях: предоставления коммерческого предложения, консультаций, заключения договоров, исполнения обязательств перед клиентом, а также для информирования о товарах и услугах.</p>
+
+      <p><strong>4. Сроки обработки</strong><br>
+      Персональные данные обрабатываются до момента достижения целей обработки, либо до момента отзыва согласия.</p>
+
+      <p><strong>5. Права пользователя</strong><br>
+      Пользователь имеет право на получение информации, касающейся обработки его персональных данных, на уточнение, блокирование или уничтожение данных, если они являются неполными или обрабатываются с нарушением законодательства.</p>
+
+      <p><strong>6. Контактная информация</strong><br>
+      По вопросам обработки персональных данных вы можете обратиться по адресу: <a href="mailto:sales@rusteks.ru" style="color:#2b9aff;">sales@rusteks.ru</a>.</p>
+
+      <p><strong>7. Изменения в политике</strong><br>
+      Оператор имеет право вносить изменения в настоящую политику. Новая редакция вступает в силу с момента её размещения на сайте.</p>
+
+      <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> На главную</a>
+    </div>
+  </div>
+
+  <hr class="gradient-hr">
+
+  <!-- Контакты + Яндекс.Карта -->
   <section id="contact" style="padding: 80px 0;">
     <div class="container">
       <div class="contact-info-block">
@@ -73,6 +95,7 @@
       <button class="btn-glow" id="ctaModalBtn">Оставить заявку</button>
     </div>
   </div>
+
 </main>
 
 <footer class="footer">
@@ -103,7 +126,6 @@
   </div>
 </div>
 
-<script src="catalog.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
