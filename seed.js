@@ -50,12 +50,45 @@ const subcategories = [
   { name: 'Формирование сигнала', slug: 'formirovanie-signala', image: '/images/passiv/formirovanie-signala.png', parent: 'Пассивные компоненты', order: 14 },
   // Соединители
   
+  { name: 'FFC и FPC', slug: 'ffc-i-fpc', image: '/images/soed/ffc-i-fpc.png', parent: 'Соединители', order: 1 },
+  { name: 'Автомобильные разъемы', slug: 'avtomobilnye-razemy', image: '/images/soed/avtomobilnye-razemy.png', parent: 'Соединители', order: 2 },
+  { name: 'Аудио и видео разъемы', slug: 'audio-i-video-razemy', image: '/images/soed/audio-i-video-razemy.png', parent: 'Соединители', order: 3 },
+  { name: 'Волоконно-оптические разъемы', slug: 'volokonno-opticheskie-razemy', image: '/images/soed/volokonno-opticheskie-razemy.png', parent: 'Соединители', order: 4 },
+  { name: 'Доска к разъемам доски', slug: 'doska-k-razemam-doski', image: '/images/soed/doska-k-razemam-doski.png', parent: 'Соединители', order: 5 },
+  { name: 'Клеммная колодка', slug: 'klemmnaya-kolodka', image: '/images/soed/klemmnaya-kolodka.png', parent: 'Соединители', order: 6 },
+  { name: 'Коллекторы', slug: 'kollektory', image: '/images/soed/kollektory.png', parent: 'Соединители', order: 7 },
+  { name: 'Компания IC и компонентные гнезда', slug: 'kompaniya-ic-i-komponentnye-gnezda', image: '/images/soed/kompaniya-ic-i-komponentnye-gnezda.png', parent: 'Соединители', order: 8 },
+  { name: 'Компоненты Data Bus', slug: 'komponenty-data-bus', image: '/images/soed/komponenty-data-bus.png', parent: 'Соединители', order: 9 },
+  { name: 'Контактный разъем и гнездо', slug: 'kontaktnyj-razem-i-gnezdo', image: '/images/soed/kontaktnyj-razem-i-gnezdo.png', parent: 'Соединители', order: 10 },
+  { name: 'Круговые соединители', slug: 'krugovye-soediniteli', image: '/images/soed/krugovye-soediniteli.png', parent: 'Соединители', order: 11 },
+  { name: 'Мил-спек и индикации неисправности-тип', slug: 'indikaciya-neispravnosti', image: '/images/soed/indikaciya-neispravnosti.png', parent: 'Соединители', order: 12 },
+  { name: 'Модульные разъемы', slug: 'modulnye-razemy', image: '/images/soed/modulnye-razemy.png', parent: 'Соединители', order: 13 },
+  { name: 'Разъем USB', slug: 'razem-usb', image: '/images/soed/razem-usb.png', parent: 'Соединители', order: 14 },
+  { name: 'Разъем питания', slug: 'razem-pitaniya', image: '/images/soed/razem-pitaniya.png', parent: 'Соединители', order: 15 },
+  { name: 'Разъемы', slug: 'razemy', image: '/images/soed/razemy.png', parent: 'Соединители', order: 16 },
+  { name: 'Разъемы D-Sub', slug: 'razemy-d-sub', image: '/images/soed/razemy-d-sub.png', parent: 'Соединители', order: 17 },
+  { name: 'Разъемы I и O', slug: 'razemy-i-i-o', image: '/images/soed/razemy-i-i-o.png', parent: 'Соединители', order: 18 },
+  { name: 'Разъемы IEEE 1394', slug: 'razemy-ieee-1394', image: '/images/soed/razemy-ieee-1394.png', parent: 'Соединители', order: 19 },
+  { name: 'Разъемы края карточки', slug: 'razemy-kraya-kartochki', image: '/images/soed/razemy-kraya-kartochki.png', parent: 'Соединители', order: 20 },
+  { name: 'Разъемы объединительной платы', slug: 'razemy-obedinitelnoj-platy', image: '/images/soed/razemy-obedinitelnoj-platy.png', parent: 'Соединители', order: 21 },
+  { name: 'Разъемы оптического волокна', slug: 'razemy-opticheskogo-volokna', image: '/images/soed/razemy-opticheskogo-volokna.png', parent: 'Соединители', order: 22 },
+  { name: 'Разъемы освещения', slug: 'razemy-osveshheniya', image: '/images/soed/razemy-osveshheniya.png', parent: 'Соединители', order: 23 },
+  { name: 'Разъемы памяти', slug: 'razemy-pamyati', image: '/images/soed/razemy-pamyati.png', parent: 'Соединители', order: 24 },
+  { name: 'Системы соединения', slug: 'sistemy-soedineniya', image: '/images/soed/sistemy-soedineniya.png', parent: 'Соединители', order: 25 },
+  { name: 'Соединения RF', slug: 'soedineniya-rf', image: '/images/soed/soedineniya-rf.png', parent: 'Соединители', order: 26 },
+  { name: 'Солнечные разъемы и фотоэлектрические разъемы', slug: 'solnechnye-razemy-i-fotoelektricheskie-razemy', image: '/images/soed/solnechnye-razemy-i-fotoelektricheskie-razemy.png', parent: 'Соединители', order: 27 },
+  { name: 'Терминалы', slug: 'terminaly', image: '/images/soed/terminaly.png', parent: 'Соединители', order: 28 },
+  { name: 'Фильтры линии электропередач', slug: 'filtry-linii-elektroperedach', image: '/images/soed/filtry-linii-elektroperedach.png', parent: 'Соединители', order: 29 }
 ];
 
 async function seed() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('✅ Connected to MongoDB');
+    dotenv.config();
+
+    await mongoose.connect(process.env.MONGODB_URI, {
+    })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
     // Проверяем, есть ли уже категории
     const count = await Category.countDocuments();
