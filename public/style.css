@@ -21,10 +21,31 @@ body {
 }
 
 .container-hero {
-  background-image: url('/images/hero.gif');
-  background-size: cover;      /* Масштабирует под размер блока */
-  background-repeat: no-repeat; /* Не повторяем */
-  background-position: center;  /* Центрируем */
+  position: relative;          /* чтобы видео и контент позиционировались относительно него */
+  overflow: hidden;            /* обрезаем видео по границам блока */
+  min-height: 600px;           /* подгоните под ваш дизайн */
+  /* фоновый цвет — на случай, если видео ещё не загрузилось */
+  background-color: #0a0c12;
+  /* удалите старые свойства background-image, background-size и т.д. */
+}
+
+/* Видео как фон */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* аналог background-size: cover */
+  object-position: center;     /* аналог background-position: center */
+  z-index: 0;
+  pointer-events: none;        /* чтобы клики уходили на контент */
+}
+
+/* Контент поверх видео */
+.container-hero .hero {
+  position: relative;
+  z-index: 1;
 }
 
 .header {
